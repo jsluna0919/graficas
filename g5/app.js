@@ -4,7 +4,7 @@ Highcharts.chart('container', {
         options3d: {
             enabled: true,
             alpha: 15,
-            beta: 15,
+            beta: 25,
             depth: 50,
             viewDistance: 25
         }
@@ -19,11 +19,11 @@ Highcharts.chart('container', {
     },
     xAxis: {
         categories: [
-            '0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69',
+            '0-10', '11-20', '21-30', '31-40', '41-50', '51-60', '61-70',
             '70-79', '80-89', '90+'
         ],
         title: {
-            text: 'Age groups'
+            text: 'Grupos de edades'
         },
         labels: {
             skew3d: true
@@ -32,7 +32,7 @@ Highcharts.chart('container', {
     yAxis: {
         title: {
             margin: 20,
-            text: 'Reported cases'
+            text: 'Casos Reportados'
         },
         labels: {
             skew3d: true
