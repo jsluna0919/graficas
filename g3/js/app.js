@@ -3,16 +3,16 @@ const day = 24 * 36e5,
 
 const options = {
     chart: {
-        plotBackgroundColor: 'rgba(128,128,128,0.02)',
-        plotBorderColor: 'rgba(128,128,128,0.1)',
+        plotBackgroundColor: 'rgba(50,50,50,0.05)',
+        plotBorderColor: 'rgba(50,50,50,0.2)',
         plotBorderWidth: 1
     },
 
     plotOptions: {
         series: {
-            borderRadius: '50%',
+            borderRadius: '10%',
             connectors: {
-                dashStyle: 'ShortDot',
+                dashStyle: 'Solid',
                 lineWidth: 2,
                 radius: 5,
                 startMarker: {
@@ -57,7 +57,7 @@ const options = {
             start: today - (2 * day),
             end: today + (6 * day),
             completed: {
-                amount: 0.2
+                amount: 0.8
             },
             owner: 'Linda'
         }, {
@@ -155,7 +155,7 @@ const options = {
             'Owner: {#if point.owner}{point.owner}{else}unassigned{/if}'
     },
     title: {
-        text: 'Gantt Project Management'
+        text: 'Cronograma del proyecto'
     },
     xAxis: [{
         currentDateIndicator: {
