@@ -3,15 +3,15 @@ Highcharts.chart('container', {
         type: 'bar'
     },
     title: {
-        text: 'Historic World Population by Region'
+        text: 'Registro vacunacion anual segun el ICA'
     },
     subtitle: {
         text: 'Source: <a ' +
-            'href="https://en.wikipedia.org/wiki/List_of_continents_and_continental_subregions_by_population"' +
-            'target="_blank">Wikipedia.org</a>'
+            'href="https://www.ica.gov.co/areas/pecuaria/servicios/epidemiologia-veterinaria/censos-2016/censo-2018"' +
+            'target="_blank">ica.gov.co</a>'
     },
     xAxis: {
-        categories: ['Africa', 'America', 'Asia', 'Europe'],
+        categories: ['Antioquia', 'Cordoba', 'Meta', 'Casanare'],
         title: {
             text: null
         },
@@ -56,13 +56,19 @@ Highcharts.chart('container', {
         enabled: false
     },
     series: [{
-        name: 'Year 1990',
-        data: [632, 727, 3202, 721]
+        name: 'Año 2020',
+        data: [3179957, 2133853, 2164484, 2141435]
     }, {
-        name: 'Year 2000',
-        data: [814, 841, 3714, 726]
+        name: 'Año 2021',
+        data: [3314120, 2458740, 2416700, 2404970]
     }, {
-        name: 'Year 2021',
-        data: [1393, 1031, 4695, 745]
+        name: 'Año 2022',
+        data: [3424088, 2505772, 2457770, 2441250]
+    },{
+        name: 'Año 2023',
+        data: [3565340, 2624043, 2569880, 2531025]
+    },{
+        name: 'Año 2024',
+        data: [3500000, 2600000, 2550000, 2500000]
     }]
 });
