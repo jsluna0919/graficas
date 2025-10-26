@@ -1,14 +1,31 @@
-Highcharts.chart('container', {
+var isDragging = false;
+var startX = 0;
+var startY = 0;
+var chartAlpha = 45; // Valor inicial de alpha
+var chartBeta = 35;  // Valor inicial de beta
+const rotationSpeed = 0.5; // Ajusta este valor para hacer la rotación más o menos sensible
+
+// --- EVENTO GLOBAL: Se ejecuta al soltar el clic ---
+// Debe estar fuera de la configuración de Highcharts y en el documento.
+document.addEventListener('mouseup', function() {
+    isDragging = false;
+});
+
+chartConfig= {
     chart: {
         type: 'cylinder',
         options3d: {
             enabled: true,
-            alpha: 45,
-            beta: 35,
+            alpha: chartAlpha,
+            beta: chartBeta,
             depth: 50,
             viewDistance: 25
-        }
+        },
+
+        
     },
+    // ... el resto de tus opciones ...        
+    
     title: {
         text: 'Numero de casos confirmados'
     },
@@ -55,4 +72,66 @@ Highcharts.chart('container', {
         name: 'Casos',
         showInLegend: false
     }]
+};
+
+
+
+const myChart = Highcharts.chart('container', chartConfig);
+
+const chartContainer = myChart.container; 
+
+
+document.addEventListener('pointerup', function() {
+    if (isDragging) {
+        isDragging = false;
+        console.log('mouseup: Arrastre detenido.');
+        myChart.update({
+            chart: {
+                options3d: {
+                    alpha: chartAlpha,
+                    beta: chartBeta
+                }
+            }
+        }, true);
+    }
+    console.log('mouseup: Arrastre detenido.');
 });
+
+// 4. Adjuntar MOUSE DOWN directamente al contenedor del gráfico
+chartContainer.addEventListener('mousedown', function(e) {
+    isDragging = true;
+    
+    // Usamos e.clientX/Y (coordenadas de la ventana) para evitar problemas de offset
+    startX = e.clientX;
+    startY = e.clientY;
+    
+    e.preventDefault(); 
+    if (isDragging){
+        console.log('mousedown activo y dragging.');
+    }
+    else console.log('mousedown activo ');
+});
+
+// 5. Adjuntar MOUSE MOVE al DOCUMENT (para capturar arrastres fuera del gráfico)
+document.addEventListener('mousemove', function(e) {
+    
+    if (isDragging) {
+        let deltaX = e.clientX - startX;
+        let deltaY = e.clientY - startY;
+
+        // Lógica de Rotación 3D
+        chartBeta += deltaX * rotationSpeed;
+        chartAlpha -= deltaY * rotationSpeed; // Negativo para rotación intuitiva
+        chartAlpha = Math.max(0, Math.min(90, chartAlpha)); 
+        
+        
+        
+        // Actualizar la posición de inicio para el arrastre continuo
+        startX = e.clientX;
+        startY = e.clientY;
+        console.log('mousemove activo.');
+    }
+    //console.log('mousemove activo.');
+});
+
+// 6. Adjuntar MOUSE UP al DOCUMENT (para detener el arrastre)
