@@ -10,10 +10,10 @@ Highcharts.chart('container', {
         }
     },
     title: {
-        text: 'Number of confirmed COVID-19'
+        text: 'Numero de casos confirmados'
     },
     subtitle: {
-        text: 'Source: ' +
+        text: 'Fuente: ' +
             '<a href="https://www.fhi.no/en/id/infectious-diseases/coronavirus/daily-reports/daily-reports-COVID19/"' +
             'target="_blank">FHI</a>'
     },
@@ -52,7 +52,7 @@ Highcharts.chart('container', {
             95321, 169339, 121105, 136046, 106800, 58041, 26766, 14291,
             7065, 3283
         ],
-        name: 'Cases',
+        name: 'Casos',
         showInLegend: false
     }]
 });
